@@ -1,0 +1,106 @@
+apply plugin: "com.android.library"
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+apply plugin: 'com.jakewharton.butterknife'
+
+greendao{
+    schemaVersion 1
+    daoPackage 'com.juziwl.commonlibrary.dao'
+    targetGenDir 'src/main/java'
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    resourcePrefix "common_"
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        renderscriptTargetApi rootProject.ext.android.compileSdkVersion
+        renderscriptSupportModeEnabled true
+        ndk { abiFilters "armeabi-v7a" }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dexOptions {
+        maxProcessCount 4
+        javaMaxHeapSize "8g"
+    }
+}
+
+repositories {
+    jcenter() // If not already there
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile rootProject.ext.dependencies["appcompat-v7"]
+    compile rootProject.ext.dependencies["design"]
+    compile rootProject.ext.dependencies["recyclerview-v7"]
+    compile rootProject.ext.dependencies["cardview-v7"]
+    compile rootProject.ext.dependencies["support-v4"]
+    compile rootProject.ext.dependencies["multidex"]
+    //rxjava
+    compile rootProject.ext.dependencies["rxjava"]
+    compile rootProject.ext.dependencies["rxandroid"]
+    compile rootProject.ext.dependencies["rxpermissions"]
+    compile rootProject.ext.dependencies["rxbinding"]
+    compile rootProject.ext.dependencies["rxbinding-support-v4"]
+    compile rootProject.ext.dependencies["rxlifecycle"]
+    compile rootProject.ext.dependencies["rxlifecycle-android"]
+    //retrofit2
+    compile rootProject.ext.dependencies["fastjson"]
+    compile rootProject.ext.dependencies["retrofit"]
+    compile rootProject.ext.dependencies["retrofit-adapter-rxjava"]
+    compile rootProject.ext.dependencies["okhttp"]
+    compile rootProject.ext.dependencies["okhttp-logging-interceptor"]
+    //glide
+    compile rootProject.ext.dependencies["glide"]
+    compile rootProject.ext.dependencies["glide-okhttp3-integration"]
+    compile rootProject.ext.dependencies["glide-transformations"]
+    //stetho
+    compile rootProject.ext.dependencies["stetho"]
+    compile rootProject.ext.dependencies["stetho-okhttp3"]
+    //dagger2
+    provided rootProject.ext.dependencies["javax.annotation-api"]
+    compile rootProject.ext.dependencies["dagger"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    //logger
+    compile rootProject.ext.dependencies["logger"]
+    compile files('libs/pinyin4j-2.5.0.jar')
+    //compile project(':pickerview')
+    compile project(':themvp')
+    //compile project(':statisticslibrary')
+
+    //greendao
+    compile rootProject.ext.dependencies["greendao"]
+    compile rootProject.ext.dependencies["GreenDaoUpgradeHelper"]
+    // add library
+    compile files('libs/libammsdk.jar')
+    //友盟
+    compile rootProject.ext.dependencies["umeng-analytics"]
+    //nineoldandroids
+    compile rootProject.ext.dependencies["nineoldandroids"]
+    //butterknife
+    compile rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    compile project(':photoview')
+    //compile project(':presentation')
+
+    //compile project(':ui')
+
+    //compile project(':pulltorefresh')
+    compile files('libs/tbs_sdk_thirdapp_v3.1.0.1034_43100_sharewithdownload_obfs_20170301_182143.jar')
+    compile project(':pulltorefresh')
+}

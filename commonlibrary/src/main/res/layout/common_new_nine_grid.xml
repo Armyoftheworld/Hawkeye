@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+
+
+
+    <com.juziwl.commonlibrary.view.RectImageView
+        android:id="@+id/image1"
+        android:layout_width="0dp"
+        android:layout_height="135dp"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        app:common_borderRadius="4dp"
+        app:common_type="round"
+        android:visibility="gone" />
+
+    <com.juziwl.commonlibrary.view.RectImageView
+        android:id="@+id/image2"
+        android:layout_width="0dp"
+        android:layout_height="135dp"
+        android:layout_marginLeft="8dp"
+        android:layout_weight="1"
+        app:common_borderRadius="4dp"
+        app:common_type="round"
+        android:scaleType="centerCrop" />
+
+    <com.juziwl.commonlibrary.view.ninegridview.NineGridlayout
+        android:id="@+id/gridView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:horizontalSpacing="8dp"
+        android:listSelector="@color/common_transparent"
+        android:numColumns="3"
+        android:stretchMode="none"
+        android:visibility="gone" />
+
+</LinearLayout>

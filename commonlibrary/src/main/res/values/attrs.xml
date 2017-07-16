@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="common_borderRadius" format="dimension" />
+    <attr name="common_type">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+
+    <declare-styleable name="common_RoundImageView">
+        <attr name="common_borderRadius" />
+        <attr name="common_type" />
+    </declare-styleable>
+
+    <declare-styleable name="common_MTextView">
+        <attr name="common_isMatchParent" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="common_ExpandableTextView">
+        <attr name="common_maxCollapsedLines" format="integer" />
+        <attr name="common_animDuration" format="integer" />
+        <attr name="common_animAlphaStart" format="float" />
+        <attr name="common_showorhide" format="boolean" />
+        <!--<attr name="expandDrawable" format="reference"/>-->
+        <!--<attr name="collapseDrawable" format="reference"/>-->
+    </declare-styleable>
+    <declare-styleable name="common_MovieRecorderView">
+        <!-- 开始是否打开摄像头 -->
+        <attr name="common_is_open_camera" format="boolean" />
+        <!-- 一次拍摄最长时间 -->
+        <attr name="common_record_max_time" format="integer" />
+        <!-- 视频分辨率宽度 -->
+        <attr name="common_record_width" format="integer" />
+        <!-- 视频分辨率高度 -->
+        <attr name="common_record_height" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="common_swipelistviewstyle">
+        <attr name="common_right_width" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="common_RoundProgressBar">
+        <attr name="common_roundColor" format="color" />
+        <attr name="common_roundProgressColor" format="color" />
+        <attr name="common_roundWidth" format="dimension" />
+        <attr name="common_textColor" format="color" />
+        <attr name="common_textSize" format="dimension" />
+        <attr name="common_max" format="integer" />
+        <attr name="common_textIsDisplayable" format="boolean" />
+        <attr name="common_style1">
+            <enum name="STROKE" value="0" />
+            <enum name="FILL" value="1" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="common_MyCircleProgressBar">
+        <attr name="common_cpb_strokeWidth" format="dimension" />
+        <attr name="common_cpb_startColor" format="color" />
+        <attr name="common_cpb_endColor" format="color" />
+        <attr name="common_cpb_duration" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="common_UnderlineIndicatorView">
+        <attr name="common_count" format="integer" />
+    </declare-styleable>
+</resources>
