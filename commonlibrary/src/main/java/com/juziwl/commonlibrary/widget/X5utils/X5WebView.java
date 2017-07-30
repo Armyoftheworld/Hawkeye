@@ -10,8 +10,8 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 
-import com.facebook.stetho.common.LogUtil;
 import com.juziwl.commonlibrary.config.Global;
+import com.orhanobut.logger.Logger;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.SslError;
@@ -76,7 +76,7 @@ public class X5WebView extends WebView {
 
     private void initWebViewSettings(final Context context) {
         WebSettings webSetting = this.getSettings();
-        webSetting.setDefaultTextEncodingName(Global.encoding);
+        webSetting.setDefaultTextEncodingName(Global.ENCODING);
         webSetting.setJavaScriptEnabled(true);
         webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
         webSetting.setAllowFileAccess(true);
@@ -177,7 +177,7 @@ public class X5WebView extends WebView {
 
         @Override
         public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-            LogUtil.d("message = " + consoleMessage.message() + "\tlineNumber = "
+            Logger.d("message = " + consoleMessage.message() + "\tlineNumber = "
                     + consoleMessage.lineNumber() + "\tsourceId = " + consoleMessage.sourceId(), false);
             return super.onConsoleMessage(consoleMessage);
         }

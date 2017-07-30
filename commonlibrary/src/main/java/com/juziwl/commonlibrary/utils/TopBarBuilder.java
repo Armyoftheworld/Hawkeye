@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.juziwl.commonlibrary.R;
 import com.juziwl.commonlibrary.R2;
-import com.juziwl.commonlibrary.view.TopSearchView;
 import com.juziwl.commonlibrary.widget.CircleView;
 
 import java.lang.annotation.Retention;
@@ -79,22 +78,12 @@ public class TopBarBuilder {
     @BindView(R2.id.cv_bo_weng)
     CircleView circleView;
 
-
-    public TopSearchView getTop_search_bar() {
-        return top_search_bar;
-    }
-
-    @BindView(R2.id.top_search_bar)
-    TopSearchView top_search_bar;
+    private int topBarLayoutId = R.id.top_title_headerbar;
 
 
+    public CircleView getCircleView() {
 
-    private   int topBarLayoutId= R.id.top_title_headerbar;
-
-
-    public CircleView getCircleView(){
-
-        return  circleView;
+        return circleView;
     }
 
 //public ImageView getRightImage(){
@@ -103,13 +92,13 @@ public class TopBarBuilder {
 //    return image_btn;
 //}
 
-    public TopBarBuilder setCenter_top_title(String text){
+    public TopBarBuilder setCenter_top_title(String text) {
         center_top_title.setVisibility(!TextUtils.isEmpty(text) ? View.VISIBLE : View.GONE);
         center_top_title.setText(text);
         return this;
     }
 
-    public TopBarBuilder setCenter_down_title(String  text){
+    public TopBarBuilder setCenter_down_title(String text) {
         center_down_title.setVisibility(!TextUtils.isEmpty(text) ? View.VISIBLE : View.GONE);
         center_down_title.setText(text);
         return this;
@@ -168,7 +157,7 @@ public class TopBarBuilder {
 //        params.addRule(width, height);
         params.addRule(RelativeLayout.CENTER_VERTICAL);
         params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        params.setMargins(0, 0, CommonTools.dip2px(title_right_layout.getContext(), 10), 0);
+        params.setMargins(0, 0, DisplayUtils.dip2px(10), 0);
         title_right_layout.setLayoutParams(params);
         return this;
     }
@@ -179,11 +168,10 @@ public class TopBarBuilder {
         return this;
     }
 
-    public TopBarBuilder setTitleColor(int  color) {
+    public TopBarBuilder setTitleColor(int color) {
         title_string.setTextColor(color);
         return this;
     }
-
 
 
     public TopBarBuilder setTitleAndColor(String title, int color) {
@@ -357,10 +345,9 @@ public class TopBarBuilder {
     }
 
     public TopBarBuilder setTopBarBackGround(int color) {
-       topbar.setBackgroundResource(color);
+        topbar.setBackgroundResource(color);
         return this;
     }
-
 
 
     public TopBarBuilder setTitleMargin(int left, int right) {

@@ -58,7 +58,7 @@ public class BrowseImagesActivity extends BaseActivity<BrowseImagesDelegate> {
         } else {
             pic = new String[piclist.length];
             for (int i = 0; i < piclist.length; i++) {
-                pic[i] = CommonTools.isEmpty(piclist[i]) ? "" : piclist[i];
+                pic[i] = StringUtils.isEmpty(piclist[i]) ? "" : piclist[i];
             }
 
         }
@@ -92,7 +92,7 @@ public class BrowseImagesActivity extends BaseActivity<BrowseImagesDelegate> {
         Window window = dialog.getWindow();
         window.setGravity(Gravity.BOTTOM);
         WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = CommonTools.getScreenWidth(this);
+        lp.width = DisplayUtils.getScreenWidth();
         window.setAttributes(lp);
     }
 
@@ -136,13 +136,13 @@ public class BrowseImagesActivity extends BaseActivity<BrowseImagesDelegate> {
             @Override
             public void onFileLoadingComplete(File file) {
                 try {
-                    File image = new File(Global.SAVEPICTURE + CommonTools.getMsgCurrentTime() + ".png");
-                    CommonTools.copyFile(file, image);
+                    File image = new File(Global.SAVEPICTURE + System.currentTimeMillis() + ".png");
+                    FileUtils.copyFile(file, image);
                     MediaStore.Images.Media.insertImage(getContentResolver(), image.getAbsolutePath(), image.getName(), "orange");
-                    CommonTools.showToast("保存成功");
+                    ToastUtils.showToast("保存成功");
                 } catch (Exception e) {
                     e.printStackTrace();
-                    CommonTools.showToast("保存失败");
+                    ToastUtils.showToast("保存失败");
                 }
                 if (dialog != null) {
                     dialog.dismiss();
@@ -151,7 +151,7 @@ public class BrowseImagesActivity extends BaseActivity<BrowseImagesDelegate> {
 
             @Override
             public void onLoadingFailed() {
-                CommonTools.showToast("保存失败");
+                ToastUtils.showToast("保存失败");
                 if (dialog != null) {
                     dialog.dismiss();
                 }

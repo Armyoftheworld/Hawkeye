@@ -8,7 +8,7 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.juziwl.commonlibrary.utils.CommonTools;
+import com.juziwl.commonlibrary.utils.DisplayUtils;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.ValueAnimator;
@@ -28,18 +28,14 @@ public class CircleView extends View {
     private float radio = 0.77f;
 
 
-    private  int  radius;  //圆圈半径
-    private  int  paintWidth; //画笔宽度
+    private int radius;  //圆圈半径
+    private int paintWidth; //画笔宽度
 
 
-    public  int centx;
-    public  int centy;
+    public int centx;
+    public int centy;
 
-    private  int  maxradius;
-
-
-
-
+    private int maxradius;
 
 
     public CircleView(Context context) {
@@ -56,15 +52,14 @@ public class CircleView extends View {
 //        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 //        paint.setColor(getResources().getColor(com.juziwl.commonlibrary.R.color.common_new_main_color));
 //        paint.setStyle(Paint.Style.FILL);
-        centx=CommonTools.dip2px(getContext(),22);
-        centy =CommonTools.dip2px(getContext(),22);
-        radius=CommonTools.dip2px(getContext(),19); //
-        maxradius=CommonTools.dip2px(getContext(),20);
+        centx = DisplayUtils.dip2px(22);
+        centy = DisplayUtils.dip2px(22);
+        radius = DisplayUtils.dip2px(19); //
+        maxradius = DisplayUtils.dip2px(20);
 
 
-
-        paintWidth= CommonTools.dip2px(getContext(),3);
-        paint=new Paint();
+        paintWidth = DisplayUtils.dip2px(3);
+        paint = new Paint();
         paint.setStrokeWidth(paintWidth);
         paint.setAntiAlias(true);//抗锯齿功能
         paint.setColor(Color.WHITE);  //设置画笔颜色
@@ -88,7 +83,6 @@ public class CircleView extends View {
         canvas.drawCircle(centx, centy, radius, paint);
 
 
-
     }
 
     @Override
@@ -102,19 +96,19 @@ public class CircleView extends View {
     int currentAlpha;
 
 
-    public void startAnimation(){
-        ValueAnimator stretchAnim1 = ValueAnimator.ofInt(radius/4,radius);
+    public void startAnimation() {
+        ValueAnimator stretchAnim1 = ValueAnimator.ofInt(radius / 4, radius);
         stretchAnim1.setDuration(300);
         stretchAnim1.setTarget(this);
         stretchAnim1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                Integer integer= (Integer)animation.getAnimatedValue();
-                Integer myradius= radius;
+                Integer integer = (Integer) animation.getAnimatedValue();
+                Integer myradius = radius;
 
-                 Float alpha=  (Float.valueOf(integer.toString())/Float.valueOf(maxradius*1.0f));
-                 currentAlpha= (int) ((1-alpha)*255);
-                radius=integer;
+                Float alpha = (Float.valueOf(integer.toString()) / Float.valueOf(maxradius * 1.0f));
+                currentAlpha = (int) ((1 - alpha) * 255);
+                radius = integer;
 
 //                alpha
                 paint.setAlpha(currentAlpha); //255
@@ -146,14 +140,14 @@ public class CircleView extends View {
         this.animationEndListener = animationEndListener;
     }
 
-    public AnimationEndListener  animationEndListener;
+    public AnimationEndListener animationEndListener;
 
-public interface AnimationEndListener{
+    public interface AnimationEndListener {
 
 
-    void  animationEnd();
+        void animationEnd();
 
-}
+    }
 
 
 }

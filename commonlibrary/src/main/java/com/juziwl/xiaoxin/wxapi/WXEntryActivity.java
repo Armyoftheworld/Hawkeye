@@ -8,12 +8,13 @@ import com.juziwl.commonlibrary.config.BaseActivity;
 import com.juziwl.commonlibrary.config.Global;
 import com.juziwl.commonlibrary.mvp.view.WXDelegate;
 import com.juziwl.commonlibrary.utils.AppManager;
-import com.juziwl.commonlibrary.utils.CommonTools;
+import com.juziwl.commonlibrary.utils.ToastUtils;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
+
 
 public class WXEntryActivity extends BaseActivity<WXDelegate> implements IWXAPIEventHandler {
 
@@ -84,7 +85,7 @@ public class WXEntryActivity extends BaseActivity<WXDelegate> implements IWXAPIE
                 break;
         }
 
-        CommonTools.showToast(result);
+        ToastUtils.showToast(result);
         finish();
     }
 }

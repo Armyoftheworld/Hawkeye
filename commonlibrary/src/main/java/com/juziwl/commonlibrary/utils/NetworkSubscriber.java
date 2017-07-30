@@ -1,5 +1,7 @@
 package com.juziwl.commonlibrary.utils;
 
+import android.widget.Toast;
+
 import com.juziwl.commonlibrary.R;
 import com.juziwl.commonlibrary.config.Global;
 import com.orhanobut.logger.Logger;
@@ -30,10 +32,10 @@ public abstract class NetworkSubscriber<T> implements Subscriber<T> {
         DialogManager.getInstance().cancelDialog();
         Logger.e(e, "");
         if (!NetworkUtils.isNetworkAvailable(Global.application)) {
-            CommonTools.showToast(R.string.common_useless_network);
+            ToastUtils.showToast(R.string.common_useless_network);
         } else {
             if(!dealHttpException(e)){
-                CommonTools.showToast(R.string.common_fail_to_request);
+                ToastUtils.showToast(R.string.common_fail_to_request);
             }
         }
     }

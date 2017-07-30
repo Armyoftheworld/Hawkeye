@@ -100,8 +100,6 @@ public abstract class BaseFragment<T extends BaseAppDelegate> extends FragmentPr
         lifecycleSubject.onNext(FragmentEvent.CREATE);
         //注入对象
         injectFragment();
-        uid = userPreference.getUid();
-        token = userPreference.getToken();
         if (savedInstanceState != null) {
             boolean isSupportHidden = savedInstanceState.getBoolean(STATE_SAVE_IS_HIDDEN);
             FragmentTransaction ft = getFragmentManager().beginTransaction();

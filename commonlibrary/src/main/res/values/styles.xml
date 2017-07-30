@@ -103,16 +103,6 @@
         <item name="android:scrollbars">none</item>
         <item name="android:overScrollMode">never</item>
     </style>
-
-    <style name="common_refreshProgressBar" parent="@android:style/Widget.ProgressBar.Small">
-        <item name="android:indeterminateDrawable">@drawable/common_refresh_progress_bar</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:minWidth">@dimen/common_refreshProgressBarWH</item>
-        <item name="android:minHeight">@dimen/common_refreshProgressBarWH</item>
-        <item name="android:maxHeight">@dimen/common_refreshProgressBarWH</item>
-        <item name="android:maxWidth">@dimen/common_refreshProgressBarWH</item>
-    </style>
     <style name="common_customProgressBar" parent="@android:style/Widget.ProgressBar.Small">
         <item name="android:indeterminateDrawable">@drawable/common_custom_progress_bar</item>
         <item name="android:layout_width">wrap_content</item>

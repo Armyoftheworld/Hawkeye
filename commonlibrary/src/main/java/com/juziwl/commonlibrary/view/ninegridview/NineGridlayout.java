@@ -6,10 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.juziwl.commonlibrary.R;
-import com.juziwl.commonlibrary.config.Global;
 import com.juziwl.commonlibrary.model.ImageSize;
-import com.juziwl.commonlibrary.utils.CommonTools;
+import com.juziwl.commonlibrary.utils.DisplayUtils;
 import com.juziwl.commonlibrary.utils.LoadingImgUtil;
 import com.juziwl.commonlibrary.view.RectImageView;
 
@@ -76,17 +74,17 @@ public class NineGridlayout extends ViewGroup {
 
 
             if (image.getWidth() == 0 || image.getHeight() == 0) {
-                if (image.getUrl().equals(Global.baseURL)) {
-                    softReference.get().setImageResource(R.mipmap.common_falseimg);
-                } else {
+//                if (image.getUrl().equals(Global.baseURL)) {
+//                    softReference.get().setImageResource(R.mipmap.common_falseimg);
+//                } else {
                     LoadingImgUtil.loadimg(image.getUrl(), softReference.get(), null, false);
-                }
+//                }
             } else {
-                if (image.getUrl().equals(Global.baseURL)) {
-                    softReference.get().setImageResource(R.mipmap.common_falseimg);
-                } else {
+//                if (image.getUrl().equals(Global.baseURL)) {
+//                    softReference.get().setImageResource(R.mipmap.common_falseimg);
+//                } else {
                     LoadingImgUtil.displayImageWithImageSize(image.getUrl(), softReference.get(), new ImageSize(image.getWidth(), image.getHeight()), null, false);
-                }
+//                }
             }
 
 
@@ -126,7 +124,7 @@ public class NineGridlayout extends ViewGroup {
 
     public void setTotalWidth(int width) {
         totalWidth = width;
-        gap = CommonTools.dip2px(getContext(), 8); // 间距8dp
+        gap = DisplayUtils.dip2px(8); // 间距8dp
     }
 
     public void setImagesData(List<Image> lists) {

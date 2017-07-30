@@ -16,7 +16,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
-import com.facebook.stetho.common.LogUtil;
+import com.orhanobut.logger.Logger;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -597,7 +597,7 @@ public class SafeWebView extends WebView {
         }
         @Override
         public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-            LogUtil.e("onReceivedSslError = " + error.toString());
+            Logger.e("onReceivedSslError = " + error.toString());
             injectJavascriptInterfaces(view);
             if(error.getCertificate().getIssuedTo().getCName().contains("imexue.com")||error.getCertificate().getIssuedTo().getCName().contains("juziwl.com")){
                 handler.proceed();

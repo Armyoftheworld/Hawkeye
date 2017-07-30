@@ -21,7 +21,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.regex.Pattern;
 
-import static com.juziwl.commonlibrary.utils.CommonTools.getStatusBarHeight;
 
 
 /**
@@ -100,7 +99,7 @@ public class StatusBarUtil {
 
             ViewGroup contentView = ((ViewGroup) activity.findViewById(android.R.id.content));
             View rootView = contentView.getChildAt(0);
-            int statusBarHeight = getStatusBarHeight(activity);
+            int statusBarHeight = DisplayUtils.getStatusBarHeight();
             if (rootView != null && rootView instanceof CoordinatorLayout) {
                 final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) rootView;
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -292,7 +291,7 @@ public class StatusBarUtil {
         // 内容布局不是 LinearLayout 时,设置padding top
         if (!(contentLayout instanceof LinearLayout) && contentLayout.getChildAt(1) != null) {
             contentLayout.getChildAt(1)
-                    .setPadding(contentLayout.getPaddingLeft(), getStatusBarHeight(activity) + contentLayout.getPaddingTop(),
+                    .setPadding(contentLayout.getPaddingLeft(), DisplayUtils.getStatusBarHeight() + contentLayout.getPaddingTop(),
                             contentLayout.getPaddingRight(), contentLayout.getPaddingBottom());
         }
         // 设置属性
@@ -339,7 +338,7 @@ public class StatusBarUtil {
             }
             // 内容布局不是 LinearLayout 时,设置padding top
             if (!(contentLayout instanceof LinearLayout) && contentLayout.getChildAt(1) != null) {
-                contentLayout.getChildAt(1).setPadding(0, getStatusBarHeight(activity), 0, 0);
+                contentLayout.getChildAt(1).setPadding(0, DisplayUtils.getStatusBarHeight(), 0, 0);
             }
             // 设置属性
             setDrawerLayoutProperty(drawerLayout, contentLayout);
@@ -392,7 +391,7 @@ public class StatusBarUtil {
         ViewGroup contentLayout = (ViewGroup) drawerLayout.getChildAt(0);
         // 内容布局不是 LinearLayout 时,设置padding top
         if (!(contentLayout instanceof LinearLayout) && contentLayout.getChildAt(1) != null) {
-            contentLayout.getChildAt(1).setPadding(0, getStatusBarHeight(activity), 0, 0);
+            contentLayout.getChildAt(1).setPadding(0, DisplayUtils.getStatusBarHeight(), 0, 0);
         }
 
         // 设置属性
@@ -462,7 +461,7 @@ public class StatusBarUtil {
                 return;
             }
             ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) needOffsetView.getLayoutParams();
-            layoutParams.setMargins(layoutParams.leftMargin, layoutParams.topMargin + getStatusBarHeight(activity),
+            layoutParams.setMargins(layoutParams.leftMargin, layoutParams.topMargin + DisplayUtils.getStatusBarHeight(),
                     layoutParams.rightMargin, layoutParams.bottomMargin);
             needOffsetView.setTag(TAG_KEY_HAVE_SET_OFFSET, true);
         }
@@ -575,7 +574,7 @@ public class StatusBarUtil {
         // 绘制一个和状态栏一样高的矩形
         View statusBarView = new View(activity);
         LinearLayout.LayoutParams params =
-                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight(activity));
+                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtils.getStatusBarHeight());
         statusBarView.setLayoutParams(params);
         statusBarView.setBackgroundColor(calculateStatusColor(color, alpha));
         statusBarView.setId(FAKE_STATUS_BAR_VIEW_ID);
@@ -631,7 +630,7 @@ public class StatusBarUtil {
         // 绘制一个和状态栏一样高的矩形
         View statusBarView = new View(activity);
         LinearLayout.LayoutParams params =
-                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight(activity));
+                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtils.getStatusBarHeight());
         statusBarView.setLayoutParams(params);
         statusBarView.setBackgroundColor(Color.argb(alpha, 0, 0, 0));
         statusBarView.setId(FAKE_TRANSLUCENT_VIEW_ID);

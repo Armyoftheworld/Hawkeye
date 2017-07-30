@@ -9,8 +9,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
-import com.juziwl.commonlibrary.R;
-import com.juziwl.commonlibrary.config.Global;
 import com.juziwl.commonlibrary.model.ImageSize;
 import com.juziwl.commonlibrary.utils.LoadingImgUtil;
 
@@ -81,11 +79,12 @@ public class CustomImageView extends ImageView {
         if (!TextUtils.isEmpty(url)) {
             this.url = url;
             if (isAttachedToWindow) {
-                LoadingImgUtil.loadimg(url, this, null,false);
+                LoadingImgUtil.loadimg(url, this, null, false);
 //                Picasso.with(getContext()).load(url).placeholder(new ColorDrawable(Color.parseColor("#f5f5f5"))).error(R.drawable.falseimg).into(this);
             }
         }
     }
+
     public void setImageUrl(String url, int width, int height) {
         if (!TextUtils.isEmpty(url)) {
             this.url = url;
@@ -93,17 +92,9 @@ public class CustomImageView extends ImageView {
             this.height = width;
             if (isAttachedToWindow) {
                 if (width == 0 || height == 0) {
-                    if (url.equals(Global.baseURL)) {
-                        setImageResource(R.mipmap.common_falseimg);
-                    } else {
-                        LoadingImgUtil.loadimg(url, this, null, false);
-                    }
+                    LoadingImgUtil.loadimg(url, this, null, false);
                 } else {
-                    if (url.equals(Global.baseURL)) {
-                        setImageResource(R.mipmap.common_falseimg);
-                    } else {
-                        LoadingImgUtil.displayImageWithImageSize(url, this, new ImageSize(width, height), null, false);
-                    }
+                    LoadingImgUtil.displayImageWithImageSize(url, this, new ImageSize(width, height), null, false);
                 }
             }
         }

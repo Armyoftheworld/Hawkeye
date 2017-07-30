@@ -12,16 +12,11 @@ public class Event {
         this.action = action;
     }
 
-    public Event(String action, Object object) {
-        this.action = action;
-        this.object = object;
-    }
-
     public String action = "";
 
-    public Object object;
+    private Object t;
 
     public <T extends Object> T getObject() {
-        return (T) object;
+        return (T) t;
     }
 }

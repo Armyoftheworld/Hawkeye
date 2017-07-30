@@ -12,8 +12,8 @@ import com.juziwl.commonlibrary.R2;
 import com.juziwl.commonlibrary.config.BaseAppDelegate;
 import com.juziwl.commonlibrary.model.ImageSize;
 import com.juziwl.commonlibrary.utils.BrowseImagesActivity;
-import com.juziwl.commonlibrary.utils.CommonTools;
 import com.juziwl.commonlibrary.utils.LoadingImgUtil;
+import com.juziwl.commonlibrary.utils.StringUtils;
 import com.juziwl.commonlibrary.widget.HackyViewPager;
 
 import java.lang.ref.SoftReference;
@@ -21,6 +21,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
 /**
  * @author Army
@@ -93,17 +94,13 @@ public class BrowseImagesDelegate extends BaseAppDelegate {
             SoftReference<PhotoView> photoViewSoftReference = new SoftReference<>(photoView);
             photoViewSoftReference.get().setBackgroundColor(0xff000000);
             if (isShowHeadIcon) {
-                if (CommonTools.isEmpty(pic[position])) {
+                if (StringUtils.isEmpty(pic[position])) {
                     photoViewSoftReference.get().setImageResource(R.mipmap.common_default_head);
                 } else {
                     LoadingImgUtil.displayImageWithoutPlaceholder(pic[position], photoViewSoftReference.get(), new ImageSize(480, 800), true);
                 }
             } else {
-                if (CommonTools.isEmpty(pic[position])) {
-                    photoViewSoftReference.get().setImageResource(R.mipmap.common_falseimg);
-                } else {
-                    LoadingImgUtil.displayImageWithoutPlaceholder(pic[position], photoViewSoftReference.get(), new ImageSize(480, 800), false);
-                }
+                LoadingImgUtil.displayImageWithoutPlaceholder(pic[position], photoViewSoftReference.get(), new ImageSize(480, 800), false);
             }
             photoViewSoftReference.get().setOnLongClickListener(view -> {
                 if (canImageSave) {

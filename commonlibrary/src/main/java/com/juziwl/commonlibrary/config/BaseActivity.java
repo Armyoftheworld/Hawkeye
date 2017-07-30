@@ -20,7 +20,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.facebook.stetho.common.LogUtil;
 import com.juziwl.commonlibrary.R;
 import com.juziwl.commonlibrary.model.Event;
 import com.juziwl.commonlibrary.utils.AppManager;
@@ -29,7 +28,6 @@ import com.juziwl.commonlibrary.utils.RxUtils;
 import com.juziwl.commonlibrary.utils.StatusBarUtil;
 import com.juziwl.commonlibrary.utils.TopBarBuilder;
 import com.juziwl.commonlibrary.utils.UserPreference;
-import com.juziwl.commonlibrary.view.PageStateView;
 import com.kymjs.themvp.presenter.ActivityPresenter;
 import com.orhanobut.logger.Logger;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -78,8 +76,6 @@ public abstract class BaseActivity<T extends BaseAppDelegate> extends ActivityPr
     @Inject
     UserPreference userPreference;
     protected RxPermissions rxPermissions;
-    //状态页面
-    private PageStateView pageStateView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +92,6 @@ public abstract class BaseActivity<T extends BaseAppDelegate> extends ActivityPr
         rxPermissions = new RxPermissions(this);
         injectActivity();
         if (userPreference != null) {
-            uid = userPreference.getUid();
-            token = userPreference.getToken();
         }
         //注册广播
         initBroadcastAndLocalBroadcastAction();
@@ -176,17 +170,11 @@ public abstract class BaseActivity<T extends BaseAppDelegate> extends ActivityPr
             lp.addRule(RelativeLayout.BELOW, R.id.toolbarid);//与父容器的左侧对齐
             view.setLayoutParams(lp);//设置布局参数
             rootView.addView(view);//RelativeLayout添加子View
-            pageStateView = new PageStateView(this);
-            pageStateView.setLayoutParams(lp);
-            rootView.addView(pageStateView);
         } else {
             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
             view.setLayoutParams(lp);//设置布局参数
             rootView.addView(view);//RelativeLayout添加子View
-            pageStateView = new PageStateView(this);
-            pageStateView.setLayoutParams(lp);
-            rootView.addView(pageStateView);
         }
     }
 
@@ -256,9 +244,9 @@ public abstract class BaseActivity<T extends BaseAppDelegate> extends ActivityPr
         if (TextUtils.isEmpty(content))
             return;
         if (ex == null) {
-            Logger.e(content, false);
+            Logger.e(content);
         } else {
-            LogUtil.e(content, ex, false);
+            Logger.e(ex, content);
         }
     }
 
@@ -411,19 +399,5 @@ public abstract class BaseActivity<T extends BaseAppDelegate> extends ActivityPr
 
         }
     }
-
-    //状态页面显示
-    public void showNoNetWork(){
-        if (pageStateView!=null) {
-            pageStateView.showStatePage(PageStateView.NoNETWORK);
-        }
-
-    }
-
-
-
-
-
-
 
 }

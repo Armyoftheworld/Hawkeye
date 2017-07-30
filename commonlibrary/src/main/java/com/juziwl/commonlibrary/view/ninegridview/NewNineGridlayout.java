@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 
 import com.juziwl.commonlibrary.R;
 import com.juziwl.commonlibrary.config.Global;
-import com.juziwl.commonlibrary.utils.CommonTools;
+import com.juziwl.commonlibrary.utils.DisplayUtils;
 import com.juziwl.commonlibrary.utils.LoadingImgUtil;
 import com.juziwl.commonlibrary.view.RectImageView;
 
@@ -51,16 +51,17 @@ public class NewNineGridlayout extends LinearLayout {
     }
 
     private int imageHeight = 0;
+
     //设置图片宽度以及监听等等！！
     public void showPic(int nineGridViewWidth, final String imgUrl) {
         //单张图片高度
-        imageHeight = (nineGridViewWidth - CommonTools.dip2px(mcontext, 8)) / 2;
+        imageHeight = (nineGridViewWidth - DisplayUtils.dip2px(8)) / 2;
         image1.getLayoutParams().height = imageHeight;
         image2.getLayoutParams().height = imageHeight;
         String[] picUrlStr2 = imgUrl.split(";");
         if (picUrlStr2.length == 1) {
             image1.setVisibility(View.VISIBLE);
-            image1.getLayoutParams().height=CommonTools.dip2px(mcontext,185);//390
+            image1.getLayoutParams().height = DisplayUtils.dip2px(185);//390
             image2.setVisibility(View.GONE);
             classPic.setVisibility(View.GONE);
             LoadingImgUtil.displayLongImageSize(Global.baseURL + picUrlStr2[0], image1, null);
@@ -90,7 +91,7 @@ public class NewNineGridlayout extends LinearLayout {
                     Bundle b = new Bundle();
                     b.putInt("ID", position);
                     b.putString("pics", imgUrl);
-                  //  CommonTools.startActivity(mcontext, ClazzPhotoActivity.class, b);
+                    //  CommonTools.startActivity(mcontext, ClazzPhotoActivity.class, b);
                 }
             });
         }
@@ -117,7 +118,7 @@ public class NewNineGridlayout extends LinearLayout {
 //                    bundle.putString("pics", pics);
 //                    break;
             }
-          //  CommonTools.startActivity(mcontext, ClazzPhotoActivity.class, bundle);
+            //  CommonTools.startActivity(mcontext, ClazzPhotoActivity.class, bundle);
         }
     }
 }

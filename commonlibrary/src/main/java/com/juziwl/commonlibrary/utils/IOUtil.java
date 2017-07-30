@@ -1,15 +1,13 @@
 package com.juziwl.commonlibrary.utils;
 
-import android.database.Cursor;
 import android.text.TextUtils;
 
-import com.facebook.stetho.common.LogUtil;
+import com.orhanobut.logger.Logger;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -20,25 +18,12 @@ import java.io.Writer;
 
 public class IOUtil {
 
-    private IOUtil() {
-    }
-
-    public static void closeQuietly(Closeable closeable) {
+    public static void closeStream(Closeable closeable) {
         if (closeable != null) {
             try {
                 closeable.close();
             } catch (Throwable ignored) {
-                LogUtil.d(ignored.getMessage(), ignored);
-            }
-        }
-    }
-
-    public static void closeQuietly(Cursor cursor) {
-        if (cursor != null) {
-            try {
-                cursor.close();
-            } catch (Throwable ignored) {
-                LogUtil.d(ignored.getMessage(), ignored);
+                Logger.e(ignored, ignored.getMessage());
             }
         }
     }
@@ -56,7 +41,7 @@ public class IOUtil {
                 out.write(buf, 0, len);
             }
         } finally {
-            closeQuietly(out);
+            closeStream(out);
         }
         return out.toByteArray();
     }
@@ -75,7 +60,7 @@ public class IOUtil {
                 out.write(in.read());
             }
         } finally {
-            closeQuietly(out);
+            closeStream(out);
         }
         return out.toByteArray();
     }
@@ -127,19 +112,43 @@ public class IOUtil {
         out.flush();
     }
 
-    public static boolean deleteFileOrDir(File path) {
-        if (path == null || !path.exists()) {
-            return true;
-        }
-        if (path.isFile()) {
-            return path.delete();
-        }
-        File[] files = path.listFiles();
-        if (files != null) {
-            for (File file : files) {
-                deleteFileOrDir(file);
+    /**
+     * inputStream转outputStream
+     *
+     * @param is 输入流
+     * @return outputStream子类
+     */
+    public static ByteArrayOutputStream input2OutputStream(InputStream is) {
+        if (is == null) return null;
+        try {
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            byte[] b = new byte[1024];
+            int len;
+            while ((len = is.read(b, 0, 1024)) != -1) {
+                os.write(b, 0, len);
+            }
+            return os;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-        return path.delete();
     }
+
+    /**
+     * inputStream转byteArr
+     *
+     * @param is 输入流
+     * @return 字节数组
+     */
+    public static byte[] inputStream2Bytes(InputStream is) {
+        if (is == null) return null;
+        return input2OutputStream(is).toByteArray();
+    }
+
 }

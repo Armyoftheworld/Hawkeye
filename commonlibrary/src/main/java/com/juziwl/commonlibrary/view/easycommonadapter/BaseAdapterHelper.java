@@ -49,12 +49,8 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.juziwl.commonlibrary.emoji.ExpandableTextView;
-import com.juziwl.commonlibrary.emoji.MTextView;
 import com.juziwl.commonlibrary.model.ImageSize;
 import com.juziwl.commonlibrary.utils.LoadingImgUtil;
-import com.juziwl.commonlibrary.utils.SmileyParser;
-
 
 
 /**
@@ -71,7 +67,6 @@ import com.juziwl.commonlibrary.utils.SmileyParser;
     private ImageLoad mImageLoad;
     /** Package private field to retain the associated user object and detect a change */
     Object mAssociatedObject;
-    private SmileyParser smileyParser;
     private SparseBooleanArray sparseBooleanArray = new SparseBooleanArray();
     protected BaseAdapterHelper(Context context, ViewGroup parent, int layoutId, int position) {
         this.mContext = context;
@@ -84,9 +79,6 @@ import com.juziwl.commonlibrary.utils.SmileyParser;
                 null != com.juziwl.commonlibrary.view.easycommonadapter.Adapter.singleton.getImageLoad()) {
             mImageLoad = com.juziwl.commonlibrary.view.easycommonadapter.Adapter.singleton.getImageLoad();
         }
-        smileyParser = new SmileyParser(mContext);
-
-
     }
 
     /**
@@ -164,22 +156,6 @@ import com.juziwl.commonlibrary.utils.SmileyParser;
         LoadingImgUtil.loadimg(url, view, null, false);
         return this;
     }
-// 设置表情文本
-    public BaseAdapterHelper setMText(@IdRes int viewId, String content) {
-        MTextView view = retrieveView(viewId);
-        view.setMText(smileyParser.replace(content, view));
-        return this;
-    }
-
-
-    // 设置可展开内容的view数据
-    public BaseAdapterHelper setExpressMText(@IdRes int viewId, String content, int position) {
-        ExpandableTextView view = retrieveView(viewId);
-        view.setText(smileyParser.replace(content,view.getmTv()), sparseBooleanArray, position); // true putong de
-        return this;
-    }
-
-
 
  //其他控件组合在一起此处提供所有的控件设置方法
 

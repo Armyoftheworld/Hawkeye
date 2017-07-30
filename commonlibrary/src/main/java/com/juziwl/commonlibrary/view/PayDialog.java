@@ -14,9 +14,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.juziwl.commonlibrary.R;
-import com.juziwl.commonlibrary.utils.CommonTools;
+import com.juziwl.commonlibrary.utils.DisplayUtils;
+import com.juziwl.commonlibrary.utils.StringUtils;
 
 import java.util.ArrayList;
+
 
 
 /**
@@ -109,7 +111,7 @@ public class PayDialog extends Dialog implements View.OnClickListener {
 
         into_count_title_top.setText(title);
 
-        if (!CommonTools.isEmpty(money)) {
+        if (!StringUtils.isEmpty(money)) {
             setMoneyLayout(desc, money);
         }
 
@@ -118,7 +120,7 @@ public class PayDialog extends Dialog implements View.OnClickListener {
         Window window = getWindow();
         window.setGravity(Gravity.BOTTOM);
         WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = CommonTools.getScreenWidth(context);
+        lp.width = DisplayUtils.getScreenWidth();
         window.setAttributes(lp);
     }
 

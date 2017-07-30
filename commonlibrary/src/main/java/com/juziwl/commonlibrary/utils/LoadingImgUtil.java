@@ -27,6 +27,7 @@ import com.orhanobut.logger.Logger;
 import java.io.File;
 import java.util.WeakHashMap;
 
+
 /**
  * @author ztn
  * @version V_5.0.0
@@ -39,8 +40,9 @@ public class LoadingImgUtil {
                                final ProgressBar progressBar, boolean flag) {
         if (imgview == null || imgview.getContext() == null)
             return;
-        int resId = flag ? R.mipmap.common_default_head : R.mipmap.common_falseimg;
-        Glide.with(Global.application).load(replaceImageUrlHost(url))
+        int resId = R.mipmap.common_default_head;
+//        int resId = flag ? R.mipmap.common_default_head : R.mipmap.common_falseimg;
+        Glide.with(Global.application).load(url)
                 .placeholder(resId)
                 .error(resId)
                 .fallback(resId)
@@ -89,8 +91,9 @@ public class LoadingImgUtil {
     public static void loadImgAds(String url, ImageView imgview, final ProgressBar progressBar) {
         if (imgview == null || imgview.getContext() == null)
             return;
-        int resId = R.mipmap.common_falseimg;
-        Glide.with(Global.application).load(replaceImageUrlHost(url))
+        int resId = 0;
+//        int resId = R.mipmap.common_falseimg;
+        Glide.with(Global.application).load(url)
 //                .placeholder(resId)
 //                .error(resId)
 //                .fallback(resId)
@@ -141,10 +144,10 @@ public class LoadingImgUtil {
                 .load(url)
                 .dontAnimate()
                 .dontTransform()
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .placeholder(R.mipmap.common_falseimg)
-                .fallback(R.mipmap.common_falseimg)
-                .error(R.mipmap.common_falseimg);
+                .diskCacheStrategy(DiskCacheStrategy.NONE);
+//                .placeholder(R.mipmap.common_falseimg)
+//                .fallback(R.mipmap.common_falseimg)
+//                .error(R.mipmap.common_falseimg);
         if (imageSize != null) {
             builder.override(imageSize.width, imageSize.height);
         }
@@ -156,9 +159,10 @@ public class LoadingImgUtil {
                                                  onLoadingImageListener loadListener, boolean flag) {
         if (imageView == null || imageView.getContext() == null)
             return;
-        int resId = flag ? R.mipmap.common_default_head : R.mipmap.common_falseimg;
+        int resId = R.mipmap.common_default_head;
+//        int resId = flag ? R.mipmap.common_default_head : R.mipmap.common_falseimg;
         DrawableRequestBuilder<String> builder = Glide.with(Global.application)
-                .load(replaceImageUrlHost(url))
+                .load(url)
                 .placeholder(resId)
                 .dontAnimate()
                 .dontTransform()
@@ -176,9 +180,10 @@ public class LoadingImgUtil {
                                                             ImageSize imageSize, final ProgressBar progressBar, boolean flag) {
         if (imageView == null || imageView.getContext() == null)
             return;
-        int resId = flag ? R.mipmap.common_default_head : R.mipmap.common_falseimg;
+        int resId = R.mipmap.common_default_head;
+//        int resId = flag ? R.mipmap.common_default_head : R.mipmap.common_falseimg;
         DrawableRequestBuilder<String> builder = Glide.with(Global.application)
-                .load(replaceImageUrlHost(url))
+                .load(url)
                 .placeholder(resId)
                 .error(resId)
                 .fallback(resId)
@@ -221,9 +226,10 @@ public class LoadingImgUtil {
     public static void displayLongImageSize(String url, ImageView imageView, ImageSize imageSize) {
         if (imageView == null || imageView.getContext() == null)
             return;
-        int resId = R.mipmap.common_banner_onloading;
+        int resId = 0;
+//        int resId = R.mipmap.common_banner_onloading;
         DrawableRequestBuilder<String> builder = Glide.with(Global.application)
-                .load(replaceImageUrlHost(url))
+                .load(url)
                 .placeholder(resId)
                 .fallback(resId)
                 .dontAnimate()
@@ -241,7 +247,7 @@ public class LoadingImgUtil {
         if (imageView == null || imageView.getContext() == null)
             return;
         BitmapRequestBuilder<String, Bitmap> builder = Glide.with(Global.application)
-                .load(replaceImageUrlHost(url))
+                .load(url)
                 .asBitmap()
                 .dontAnimate()
                 .dontTransform()
@@ -275,9 +281,10 @@ public class LoadingImgUtil {
     public static void displayImageWithoutPlaceholder(String url, ImageView imageView, ImageSize imageSize, boolean isHeader) {
         if (imageView == null || imageView.getContext() == null)
             return;
-        int resId = isHeader ? R.mipmap.common_default_head : R.mipmap.common_falseimg;
+        int resId = R.mipmap.common_default_head;
+//        int resId = isHeader ? R.mipmap.common_default_head : R.mipmap.common_falseimg;
         DrawableRequestBuilder<String> builder = Glide.with(Global.application)
-                .load(replaceImageUrlHost(url))
+                .load(url)
                 .dontAnimate()
                 .dontTransform()
                 .fallback(resId)
@@ -295,7 +302,7 @@ public class LoadingImgUtil {
             return;
         int resId = R.mipmap.common_broken_image_black;
         DrawableRequestBuilder<String> builder = Glide.with(Global.application)
-                .load(replaceImageUrlHost(url))
+                .load(url)
                 .dontAnimate()
                 .dontTransform()
                 .placeholder(resId)
@@ -315,7 +322,7 @@ public class LoadingImgUtil {
     }
 
     public static void getCacheImage(String path, final Handler handler, final onLoadingImageListener listener) {
-        Glide.with(Global.application).load(replaceImageUrlHost(path)).downloadOnly(new SimpleTarget<File>() {
+        Glide.with(Global.application).load(path).downloadOnly(new SimpleTarget<File>() {
             @Override
             public void onResourceReady(File resource, GlideAnimation<? super File> glideAnimation) {
                 Message msg = handler.obtainMessage(100, resource.getAbsolutePath());
@@ -336,7 +343,7 @@ public class LoadingImgUtil {
     }
 
     public static void getImageFile(String path, final OnFileImageLoadingListener listener) {
-        Glide.with(Global.application).load(replaceImageUrlHost(path)).downloadOnly(new SimpleTarget<File>() {
+        Glide.with(Global.application).load(path).downloadOnly(new SimpleTarget<File>() {
             @Override
             public void onResourceReady(File resource, GlideAnimation<? super File> glideAnimation) {
                 if (listener != null) {
@@ -355,7 +362,8 @@ public class LoadingImgUtil {
     }
 
     public static void getCacheImageBitmap(final String path, final Handler handler, ImageSize imageSize, final onLoadingImageListener loadingImageListener) {
-        BitmapRequestBuilder<String, Bitmap> builder = Glide.with(Global.application).load(replaceImageUrlHost(path)).asBitmap().diskCacheStrategy(DiskCacheStrategy.SOURCE);
+        BitmapRequestBuilder<String, Bitmap> builder = Glide.with(Global.application).load(path)
+                .asBitmap().diskCacheStrategy(DiskCacheStrategy.SOURCE);
         if (imageSize != null) {
             builder.override(imageSize.width, imageSize.height);
         }
@@ -383,16 +391,16 @@ public class LoadingImgUtil {
     }
 
     public static void displayLoopImageView(String path, ImageView imageView, ImageSize imageSize, int which) {
-        DrawableRequestBuilder<String> builder = Glide.with(Global.application).load(replaceImageUrlHost(path));
-        if (which == 1) {
-            builder.placeholder(R.mipmap.common_banner_onloading)
-                    .error(R.mipmap.common_fw_banner)
-                    .fallback(R.mipmap.common_fw_banner);
-        } else if (which == 2) {
-            builder.placeholder(R.mipmap.common_long_default_logo)
-                    .error(R.mipmap.common_long_default_logo)
-                    .fallback(R.mipmap.common_long_default_logo);
-        }
+        DrawableRequestBuilder<String> builder = Glide.with(Global.application).load(path);
+//        if (which == 1) {
+//            builder.placeholder(R.mipmap.common_banner_onloading)
+//                    .error(R.mipmap.common_fw_banner)
+//                    .fallback(R.mipmap.common_fw_banner);
+//        } else if (which == 2) {
+//            builder.placeholder(R.mipmap.common_long_default_logo)
+//                    .error(R.mipmap.common_long_default_logo)
+//                    .fallback(R.mipmap.common_long_default_logo);
+//        }
         if (imageSize != null) {
             builder.override(imageSize.width, imageSize.height);
         }
@@ -402,29 +410,6 @@ public class LoadingImgUtil {
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .listener(new LoggingListener<>())
                 .into(imageView);
-    }
-
-    private static String replaceImageUrlHost(String url){
-        String httpUrl = url;
-        if(!(url.startsWith("http://") || url.startsWith("https://"))){
-            httpUrl = Global.baseURL + url;
-        }
-        if(httpUrl.contains("exiaoxin.com") || httpUrl.contains("juziwl.com") || httpUrl.contains("imexue.com")){
-            httpUrl = httpUrl.replace("http://", "https://").replace("/psmg/", "/pimgs/");
-            String replaceHost = Global.UrlApi.contains("test.juziwl.com") ? "//test.juziwl.com/" : "//m.imexue.com/";
-            if(httpUrl.contains("//exiaoxin.com/")){
-                return httpUrl.replace("//exiaoxin.com/", replaceHost);
-            } else if(httpUrl.contains("//mp.imexue.com/")){
-                return httpUrl.replace("//mp.imexue.com/", replaceHost);
-            } else if(httpUrl.contains("//platform.exiaoxin.com/")){
-                return httpUrl.replace("//platform.exiaoxin.com/", replaceHost);
-            } else if(httpUrl.contains("//platform.imexue.com/")){
-                return httpUrl.replace("//platform.imexue.com/", replaceHost);
-            }
-            return httpUrl;
-        }else {
-            return httpUrl;
-        }
     }
 
     public static void resumeLoading() {

@@ -2,12 +2,8 @@ package com.juziwl.commonlibrary.injector.component;
 
 import android.app.Application;
 
-import com.juziwl.commonlibrary.api.ApiService;
-import com.juziwl.commonlibrary.dao.DaoSession;
-import com.juziwl.commonlibrary.injector.module.ApiModule;
 import com.juziwl.commonlibrary.injector.module.ApplicationModule;
 import com.juziwl.commonlibrary.injector.module.LocalDataManager;
-import com.juziwl.commonlibrary.injector.provide.DataManager;
 import com.juziwl.commonlibrary.utils.UserPreference;
 
 import javax.inject.Singleton;
@@ -21,15 +17,9 @@ import dagger.Component;
  * @description
  */
 @Singleton
-@Component(modules = {ApplicationModule.class, ApiModule.class, LocalDataManager.class})
+@Component(modules = {ApplicationModule.class, LocalDataManager.class})
 public interface ApplicationComponent {
     Application application();
-
-    ApiService apiservice();
-
-    DaoSession daosession();
-
-    DataManager datamanager();
 
     UserPreference userpreference();
 }
