@@ -1,5 +1,8 @@
 package com.juziwl.commonlibrary.widget;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,9 +12,6 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.juziwl.commonlibrary.utils.DisplayUtils;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.nineoldandroids.animation.ValueAnimator;
 
 
 /**

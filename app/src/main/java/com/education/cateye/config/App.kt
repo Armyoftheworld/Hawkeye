@@ -1,7 +1,11 @@
-package com.education.hawkeye
+package com.education.cateye.config
 
 import android.app.Application
+import com.education.cateye.BuildConfig
 import com.juziwl.commonlibrary.config.Global
+import com.juziwl.commonlibrary.injector.component.ApplicationComponent
+import com.juziwl.commonlibrary.injector.component.DaggerApplicationComponent
+import com.juziwl.commonlibrary.injector.module.ApplicationModule
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor
 import com.orhanobut.logger.LogLevel
@@ -16,18 +20,28 @@ import java.util.logging.Level
  * @author Army
  * @version V_1.0.0
  * @date 2017/7/16
- * @description
+ * @description 自定义Application
  */
 class App : Application() {
+
+    lateinit var applicationComponent: ApplicationComponent
+
+    companion object {
+        lateinit var instance: App
+    }
 
     override fun onCreate() {
         super.onCreate()
 
         Global.application = this
 
+        instance = this
+        applicationComponent = DaggerApplicationComponent.builder()
+                .applicationModule(ApplicationModule(this)).build()
+
+        initLogger()
         initSophix()
         initOkgo()
-        initLogger()
 
     }
 

@@ -48,7 +48,7 @@ dependencies {
     compile rootProject.ext.dependencies["appcompat-v7"]
     compile rootProject.ext.dependencies["design"]
     compile rootProject.ext.dependencies["recyclerview-v7"]
-    compile rootProject.ext.dependencies["cardview-v7"]
+//    compile rootProject.ext.dependencies["cardview-v7"]
     compile rootProject.ext.dependencies["support-v4"]
     compile rootProject.ext.dependencies["multidex"]
     //rxjava
@@ -74,8 +74,8 @@ dependencies {
     //glide
     compile rootProject.ext.dependencies["glide"]
     compile rootProject.ext.dependencies["glide-okhttp3-integration"]
-    compile rootProject.ext.dependencies["glide-transformations"]
-    //stetho
+//    compile rootProject.ext.dependencies["glide-transformations"]
+    //stetho、
 //    compile rootProject.ext.dependencies["stetho"]
 //    compile rootProject.ext.dependencies["stetho-okhttp3"]
     //dagger2
@@ -97,7 +97,7 @@ dependencies {
     //友盟
     compile rootProject.ext.dependencies["umeng-analytics"]
     //nineoldandroids
-    compile rootProject.ext.dependencies["nineoldandroids"]
+//    compile rootProject.ext.dependencies["nineoldandroids"]
     //butterknife
     compile rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]

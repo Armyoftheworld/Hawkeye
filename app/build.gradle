@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -39,6 +40,8 @@ dependencies {
     compile project(':commonlibrary')
     compile rootProject.ext.dependencies["hotfix"]
     compile rootProject.ext.dependencies["anko-commons"]
+
+    kapt rootProject.ext.dependencies["dagger-compiler"]
 }
 repositories {
     mavenCentral()

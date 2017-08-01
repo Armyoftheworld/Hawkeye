@@ -225,18 +225,4 @@
             android:visibility="visible" />
     </LinearLayout>
 
-    <!--新增的搜索栏-->
-    <com.juziwl.commonlibrary.view.TopSearchView
-        android:id="@+id/top_search_bar"
-        android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_toRightOf="@+id/set_setting_black"
-        android:layout_toLeftOf="@+id/title_right_layout"
-        android:layout_centerInParent="true"
-        android:layout_height="27dp"></com.juziwl.commonlibrary.view.TopSearchView>
-    
-    
-
 </RelativeLayout>

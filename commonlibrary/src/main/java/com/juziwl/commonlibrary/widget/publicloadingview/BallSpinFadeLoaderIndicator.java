@@ -1,9 +1,9 @@
 package com.juziwl.commonlibrary.widget.publicloadingview;
 
+import android.animation.ValueAnimator;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-import com.nineoldandroids.animation.ValueAnimator;
 
 /**
  * Created by Jack on 2015/10/20.
