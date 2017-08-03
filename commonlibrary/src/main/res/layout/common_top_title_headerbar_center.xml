@@ -124,19 +124,6 @@
             android:clickable="false"
             />
 
-
-        <!--// 波纹点击效果-->
-       <com.juziwl.commonlibrary.widget.CircleView
-           android:id="@+id/cv_bo_weng"
-           android:layout_height="match_parent"
-           android:layout_width="44dp"
-           android:layout_centerInParent="true"
-           android:visibility="gone"
-           />
-
-
-
-
     </RelativeLayout>
     <!--// 新添的位子控件-->
     <RelativeLayout

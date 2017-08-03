@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.juziwl.commonlibrary.widget.HackyViewPager
+    <com.juziwl.commonlibrary.view.HackyViewPager
         android:id="@+id/hacky_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -1,4 +1,4 @@
-package com.juziwl.commonlibrary.widget.publicloadingview;
+package com.juziwl.commonlibrary.view.publicloadingview;
 
 import android.annotation.TargetApi;
 import android.content.Context;

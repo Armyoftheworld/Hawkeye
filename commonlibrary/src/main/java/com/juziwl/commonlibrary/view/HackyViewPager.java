@@ -1,4 +1,4 @@
-package com.juziwl.commonlibrary.widget;
+package com.juziwl.commonlibrary.view;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

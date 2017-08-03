@@ -18,7 +18,7 @@ import com.juziwl.commonlibrary.R2;
 import com.juziwl.commonlibrary.config.BaseActivity;
 import com.juziwl.commonlibrary.config.Global;
 import com.juziwl.commonlibrary.mvp.view.BrowseImagesDelegate;
-import com.juziwl.commonlibrary.widget.CustomSureDialog;
+import com.juziwl.commonlibrary.view.CustomSureDialog;
 
 import java.io.File;
 

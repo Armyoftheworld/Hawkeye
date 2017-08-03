@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.juziwl.commonlibrary.R;
 import com.juziwl.commonlibrary.R2;
-import com.juziwl.commonlibrary.widget.CircleView;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -74,23 +73,7 @@ public class TopBarBuilder {
     @BindView(R2.id.center_down_title)
     TextView center_down_title;
 
-
-    @BindView(R2.id.cv_bo_weng)
-    CircleView circleView;
-
     private int topBarLayoutId = R.id.top_title_headerbar;
-
-
-    public CircleView getCircleView() {
-
-        return circleView;
-    }
-
-//public ImageView getRightImage(){
-//
-//
-//    return image_btn;
-//}
 
     public TopBarBuilder setCenter_top_title(String text) {
         center_top_title.setVisibility(!TextUtils.isEmpty(text) ? View.VISIBLE : View.GONE);

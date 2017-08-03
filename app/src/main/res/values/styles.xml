@@ -5,4 +5,15 @@
 
     </style>
 
+    <style name="myfragment_row">
+        <item name="android:paddingLeft">25dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:background">@drawable/common_item_selector_color</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableRight">@mipmap/common_arrow_friends</item>
+        <item name="android:clickable">true</item>
+    </style>
 </resources>

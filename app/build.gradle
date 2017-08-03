@@ -21,6 +21,9 @@ android {
         applicationId rootProject.ext.android.applicationId
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
+
+        multiDexEnabled true
+        ndk { abiFilters "armeabi-v7a"}
     }
     buildTypes {
         release {

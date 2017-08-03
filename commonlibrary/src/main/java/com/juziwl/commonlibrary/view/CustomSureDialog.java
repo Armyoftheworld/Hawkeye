@@ -1,4 +1,4 @@
-package com.juziwl.commonlibrary.widget;
+package com.juziwl.commonlibrary.view;
 
 import android.app.Dialog;
 import android.content.Context;

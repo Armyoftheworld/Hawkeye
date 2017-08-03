@@ -1,4 +1,4 @@
-package com.juziwl.commonlibrary.widget.X5utils;
+package com.juziwl.commonlibrary.view.X5utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.juziwl.commonlibrary.widget.publicloadingview;
+package com.juziwl.commonlibrary.view.publicloadingview;
 
 import android.animation.ValueAnimator;
 import android.graphics.Canvas;

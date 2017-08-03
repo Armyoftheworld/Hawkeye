@@ -14,7 +14,7 @@ import com.juziwl.commonlibrary.model.ImageSize;
 import com.juziwl.commonlibrary.utils.BrowseImagesActivity;
 import com.juziwl.commonlibrary.utils.LoadingImgUtil;
 import com.juziwl.commonlibrary.utils.StringUtils;
-import com.juziwl.commonlibrary.widget.HackyViewPager;
+import com.juziwl.commonlibrary.view.HackyViewPager;
 
 import java.lang.ref.SoftReference;
 import java.util.Locale;

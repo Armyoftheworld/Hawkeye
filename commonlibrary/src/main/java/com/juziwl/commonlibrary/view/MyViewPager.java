@@ -4,8 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.juziwl.commonlibrary.widget.HackyViewPager;
-
 
 public class MyViewPager extends HackyViewPager {
 	  private boolean scrollble=true;
