@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <include layout="@layout/common_top_title_headerbar_center" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/catEyePage"
-        android:gravity="center"/>
+        android:layout_height="match_parent" />
 </LinearLayout>

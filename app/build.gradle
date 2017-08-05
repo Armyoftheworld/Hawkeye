@@ -23,7 +23,7 @@ android {
         versionName rootProject.ext.android.versionName
 
         multiDexEnabled true
-        ndk { abiFilters "armeabi-v7a"}
+        ndk { abiFilters "armeabi-v7a" }
     }
     buildTypes {
         release {
@@ -43,6 +43,11 @@ dependencies {
     compile project(':commonlibrary')
     compile rootProject.ext.dependencies["hotfix"]
     compile rootProject.ext.dependencies["anko-commons"]
+    compile rootProject.ext.dependencies["anko-commons-v4"]
+    compile(rootProject.ext.dependencies["vlayout"]) {
+        transitive = true
+    }
+    compile rootProject.ext.dependencies["ezviz-sdk"]
 
     kapt rootProject.ext.dependencies["dagger-compiler"]
 }

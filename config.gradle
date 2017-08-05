@@ -48,6 +48,7 @@ ext{
 
             //retrofit
             "fastjson"                  : "com.alibaba:fastjson:1.1.56.android",
+            "gson"                      : "com.google.code.gson:gson:2.8.1",
             "retrofit"                  : "com.squareup.retrofit2:retrofit:${dependVersion.retrofit}",
             "retrofit-converter-scalars": "com.squareup.retrofit2:converter-scalars:${dependVersion.retrofit}",
             "retrofit-adapter-rxjava"   : "com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofit}",
@@ -98,6 +99,12 @@ ext{
             "anko"                      : "org.jetbrains.anko:anko:${dependVersion.anko_version}",
             "anko-commons"              : "org.jetbrains.anko:anko-commons:${dependVersion.anko_version}",
             "anko-sdk25"                : "org.jetbrains.anko:anko-sdk25:${dependVersion.anko_version}",
-            "anko-appcompat-v7"         : "org.jetbrains.anko:anko-appcompat-v7:${dependVersion.anko_version}"
+            "anko-appcompat-v7"         : "org.jetbrains.anko:anko-appcompat-v7:${dependVersion.anko_version}",
+            "anko-commons-v4"           : "org.jetbrains.anko:anko-support-v4-commons:${dependVersion.anko_version}",
+
+            "vlayout"                   : "com.alibaba.android:vlayout:1.0.9@aar",
+
+            //萤石云sdk
+            "ezviz-sdk"                 : "com.hikvision.ezviz:ezviz-sdk:4.5.1"
     ]
 }

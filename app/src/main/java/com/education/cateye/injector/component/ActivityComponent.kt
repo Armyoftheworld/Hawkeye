@@ -1,5 +1,7 @@
 package com.education.cateye.injector.component
 
+import com.education.cateye.ui.camera.activity.PlayCameraActivity
+import com.education.cateye.ui.login.activity.LoginActivity
 import com.education.cateye.ui.main.activity.MainActivity
 import com.juziwl.commonlibrary.injector.component.ApplicationComponent
 import com.juziwl.commonlibrary.injector.module.ActivityModule
@@ -16,4 +18,6 @@ import dagger.Component
 @Component(dependencies = arrayOf(ApplicationComponent::class), modules = arrayOf(ActivityModule::class))
 interface ActivityComponent {
     fun inject(mainActivity: MainActivity)
+    fun inject(loginActivity: LoginActivity)
+    fun inject(playCameraActivity: PlayCameraActivity)
 }

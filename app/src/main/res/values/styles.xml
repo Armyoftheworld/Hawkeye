@@ -16,4 +16,11 @@
         <item name="android:drawableRight">@mipmap/common_arrow_friends</item>
         <item name="android:clickable">true</item>
     </style>
+
+    <style name="TitleBar_Dark">
+        <item name="textColor">@android:color/white</item>
+        <item name="background">@color/dark_bg_70p</item>
+        <item name="backButton">@drawable/message_back_selector</item>
+    </style>
+
 </resources>

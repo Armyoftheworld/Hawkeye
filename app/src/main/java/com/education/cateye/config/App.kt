@@ -11,6 +11,7 @@ import com.lzy.okgo.interceptor.HttpLoggingInterceptor
 import com.orhanobut.logger.LogLevel
 import com.orhanobut.logger.Logger
 import com.taobao.sophix.SophixManager
+import com.videogo.openapi.EZOpenSDK
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 import java.util.logging.Level
@@ -28,6 +29,9 @@ class App : Application() {
 
     companion object {
         lateinit var instance: App
+
+        val Ezviz_APPkey = "727fcd76895e49e18f3a895dbba29843"
+        val Ezviz_APPSecret = "56d171fb892daaf0e89c90325a4748bb"
     }
 
     override fun onCreate() {
@@ -42,7 +46,24 @@ class App : Application() {
         initLogger()
         initSophix()
         initOkgo()
+        initEzviz()
 
+    }
+
+    private fun initEzviz() {
+        /**
+         * sdk日志开关，正式发布需要去掉
+         */
+        EZOpenSDK.showSDKLog(BuildConfig.DEBUG)
+        /**
+         * 设置是否支持P2P取流,详见api
+         */
+        EZOpenSDK.enableP2P(false)
+
+        /**
+         * APP_KEY请替换成自己申请的
+         */
+        EZOpenSDK.initLib(this, Ezviz_APPkey, "")
     }
 
     private fun initSophix() {

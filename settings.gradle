@@ -1,1 +1,1 @@
-include ':app', ':themvp', ':photoview', ':commonlibrary', ':pulltorefresh'
+include ':app', ':themvp', ':photoview', ':commonlibrary', ':pulltorefresh', ':ezviz'

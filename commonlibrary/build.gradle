@@ -60,7 +60,7 @@ dependencies {
     compile rootProject.ext.dependencies["rxlifecycle"]
     compile rootProject.ext.dependencies["rxlifecycle-android"]
 
-    compile rootProject.ext.dependencies["fastjson"]
+    compile rootProject.ext.dependencies["gson"]
 
     //okgo
     compile rootProject.ext.dependencies["okgo"]
