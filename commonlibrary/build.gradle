@@ -93,7 +93,7 @@ dependencies {
     compile rootProject.ext.dependencies["greendao"]
     compile rootProject.ext.dependencies["GreenDaoUpgradeHelper"]
     // add library
-    compile files('libs/libammsdk.jar')
+//    compile files('libs/libammsdk.jar')
     //友盟
     compile rootProject.ext.dependencies["umeng-analytics"]
     //nineoldandroids

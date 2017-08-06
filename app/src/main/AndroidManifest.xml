@@ -20,6 +20,7 @@
         tools:replace="android:supportsRtl">
         <activity
             android:name=".ui.login.activity.LoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +30,7 @@
         </activity>
         <activity
             android:name=".ui.main.activity.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
@@ -42,9 +44,11 @@
             android:name="com.taobao.android.hotfix.RSASECRET"
             android:value="MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCgQ3SG5j7FClnFYT/hYL/6vUOgre6AzailsQ6z/pVeMqOKkxde0rtjEtl0lwsDoXDROhAVzot79jEaDEQj1Z9RrSt6bBJ7NbWN72PptM6bQfVLOjD7zkGQkIbLQERul8TM1VVIeInlZu3RyvtONilRFY2iNZvNqTZIEfNnXjILUVvkRZ4rVHXB5jssV++auDc8qXb6mDkvhef0G7/dFFdcaKmzPx1RrGcyGirHStga9c/DV0WbjpczipsR0jrt8ejyuvPdDhPD7/Ulx1PvP/snILQtUGCL0RffE6n6lNJOKNsDpRYKtXeBUkGEIvxMtc/FxqxP1bkr9g+mPplLjXZTAgMBAAECggEANRAAjgW/9LeHn52ia/n/toJh2Nqd5FGzrCCikKATTpwPn/sxurilSJleHIdCI1KZqvzBhKbdcg7ClTBIg2Dgnkdq5N7Rg6/1y+feOewemDNPhzfeLhFNjhL8PmGqBsADbhqYYSVf6u+YgGTnri6qoWk0euerDX4gNd6Tq775bNteDsPfHFl6A0V08rkOBzu3sjzLN9xcr+asiraF0T65G1Lo+KZRUhFFIv/H975YwL2jgtI+8f4yg0FTe3hKN5MjJ3yNM8YVqdoJqLmYsYR6yIvs5B4a/EY4dslLqRd5k53icniLv4DShIlo0fHEB1QWd314auXFW3PeLBfL2Y9OqQKBgQDRp5rb7guQFoZFUj1A78i2zwvlsp3WZinfnX1GgGXa16qcjsDUBncwEIg7ObgBKm5UkJWl/0V5FtRs5VXWXzfMBSFwXQXTU0q6qurIY1M6GYdT1LkRhv6PGU3g7ZSzNULZroCMlF9kLjBt5P5qJ3ioCAJCsAhhVWPMe5a8aWJfJwKBgQDDsMscFrL3eapOr+dOT9YK+1kllVRKUJrfxeUZ4qaZ8Q6+oi71WRlDlh8Mo+ElvGPla4e1//afIJhSwtbot8RtbcYyDmSEWUoSoTyV/HxCPQ2gYkbt3xc2VGAMPxGTBWo12iOgPkExc7fs8oLGxjTXGL2bOsODN0lwaVx8zFQq9QKBgQDAYHMQ69VgWcrLQTNDqsMaO9JG6yc53HT/45tYXekYblz3W2ZFJ8mmKQVYkxXsu+qRXjpzH1G4UuKJKcch9i1U4EBWwoTd7MfdkYfuaHWuEk7C9ab8FkrvM+DqTBbueijlZeI/HMaLPnbh4AYzkhR82xx35N9LsPbqY11lda32cQKBgF0hBPhAITm/L/q0ofrV6cJeLeXB9FRNmfcGweoYwDqgyuiUXI6ssWZFyk8EqsB/sHbdPr+xqde+9l7klMw5sIR3aowl51ZI/ARzsVabyzLmxVZfjuvjcLONYgxR83YpbItmXfAD0JjNPmnIW85nQ3xeLNX0GFmY9R1HNxm5UBEFAoGAetpfN+AllO7jRPe/SjFu6B3VdyarcncLHFcgb5O8ZxVmPZiH8VhGKxmFIoHc2FZ9iD50ecfbVUneW/AVluwvyQRKg1tMHNO2WdbGetG3WuVliWPHhccZDFPcTqzH/ExtLzas/wXDBxdtB5YxwU7YWTbPHZuJtgIJ0ULcRSH2UCY=" />
 
-        <activity android:name=".ui.camera.activity.PlayCameraActivity"
+        <activity
+            android:name=".ui.camera.activity.PlayCameraActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

@@ -24,9 +24,6 @@ import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.juziwl.commonlibrary.config.Global;
 import com.orhanobut.logger.Logger;
-import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
-import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.IWXAPI;
 
 import java.io.File;
 import java.io.IOException;
@@ -78,69 +75,6 @@ public class CommonTools {
         }
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(context.getResources(), resId, options);
-    }
-
-//    public static void shareWX(final Context context, String url, String title, String picurl, String desc, int flag) {
-//        final IWXAPI api = WXAPIFactory.createWXAPI(context, Global.APP_ID, false);
-//        api.registerApp(Global.APP_ID);
-//        if (api.isWXAppInstalled()) {
-//            WXWebpageObject webpage = new WXWebpageObject();
-//            webpage.webpageUrl = url;
-//
-//            final SendMessageToWX.Req req = new SendMessageToWX.Req();
-//            req.transaction = "cateye" + System.currentTimeMillis();
-//            if (flag == 0) {
-//                req.scene = SendMessageToWX.Req.WXSceneSession;// 好友
-//            } else if (flag == 1) {
-//                req.scene = SendMessageToWX.Req.WXSceneTimeline;// 朋友圈
-//            }
-//
-//            final WXMediaMessage msg = new WXMediaMessage(webpage);
-//            msg.title = title;
-//            msg.description = desc;
-//
-//            if (picurl != null && !picurl.equals("")) {
-//                String imgs[] = picurl.split(";");
-//                String imgUrl;
-//                try {
-//                    imgUrl = imgs[0];
-//                } catch (Exception e) {
-//                    imgUrl = "";
-//                }
-//                LoadingImgUtil.getCacheImage(imgUrl, new Handler(Looper.getMainLooper()) {
-//                    @Override
-//                    public void handleMessage(Message message) {
-//                        if (message.what == 100) {
-//                            File file = new File(message.obj.toString());
-//                            if (file != null && file.exists() && file.isFile()) {
-//                                BitmapFactory.Options options = new BitmapFactory.Options();
-//                                options.inJustDecodeBounds = true;
-//                                BitmapFactory.decodeFile(file.getAbsolutePath(), options);
-//                                if (options.outHeight > 80 || options.outWidth > 80) {
-//                                    options.inSampleSize = (int) Math.max(options.outHeight * 1.0 / 80, options.outWidth * 1.0 / 80);
-//                                }
-//                                options.inJustDecodeBounds = false;
-//                                msg.setThumbImage(BitmapFactory.decodeFile(file.getAbsolutePath(), options));
-//                            } else {
-//                                msg.setThumbImage(getScaleResourseImg(context, R.mipmap.common_icon_weixin, 80, 80));
-//                            }
-//                            sendReqToWX(api, req, msg);
-//                        }
-//                    }
-//                }, null);
-//            } else {
-//                msg.setThumbImage(getScaleResourseImg(context, R.mipmap.common_icon_weixin, 80, 80));
-//                sendReqToWX(api, req, msg);
-//            }
-//
-//        } else {
-//            ToastUtils.showToast("您的手机还未安装微信客户端,暂不能分享!");
-//        }
-//    }
-
-    private static void sendReqToWX(IWXAPI api, SendMessageToWX.Req req, WXMediaMessage msg) {
-        req.message = msg;
-        api.sendReq(req);
     }
 
     public static int readPictureDegree(String path) {
