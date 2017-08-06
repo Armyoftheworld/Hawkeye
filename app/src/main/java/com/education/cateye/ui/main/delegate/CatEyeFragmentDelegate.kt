@@ -51,9 +51,20 @@ class CatEyeFragmentDelegate : BaseAppDelegate() {
             private var pagerAdapter: PagerAdapter? = null
             private var changeListener: ChangeListener? = null
             private var indicators: Array<View>? = null
+            private var prePosition = 0
+            private var viewPager: ViewPager? = null
+            private val delay = 3_000L
+            private var curPosition = 0
+
             private val mHandler = object : Handler(Looper.getMainLooper()) {
                 override fun handleMessage(msg: Message?) {
-
+                    if (msg?.what == 0 && viewPager != null) {
+                        curPosition = viewPager!!.currentItem
+                        curPosition = (curPosition + 1) % viewPager!!.adapter.count
+                        prePosition = curPosition
+                        viewPager?.currentItem = curPosition
+                        sendEmptyMessageDelayed(0, delay)
+                    }
                 }
             }
 
@@ -62,6 +73,7 @@ class CatEyeFragmentDelegate : BaseAppDelegate() {
                     if (pagerAdapter == null) {
                         pagerAdapter = PagerAdapter(this, viewPool, data)
                     }
+                    viewPager = holder.itemView!!.viewpager
                     holder.itemView!!.viewpager.adapter = pagerAdapter
                     if (indicators == null) {
                         indicators = Array(data.size, { View(getActivity()) })
@@ -69,14 +81,39 @@ class CatEyeFragmentDelegate : BaseAppDelegate() {
                         changeListener = ChangeListener(indicators!!)
                         holder.itemView.viewpager.addOnPageChangeListener(changeListener)
                     }
+                    holder.itemView.viewpager.setCurrentItem(prePosition, true)
+                    mHandler.removeMessages(0)
+                    mHandler.sendEmptyMessageDelayed(0, delay)
                 }
             }
 
             override fun onViewRecycled(holder: RecyclerView.ViewHolder?) {
                 if (holder?.itemView?.id == R.id.viewpager_container) {
+                    mHandler.removeMessages(0)
                     holder.itemView!!.viewpager.adapter = null
                 }
             }
+
+            inner class ChangeListener(val indicators: Array<View>) : ViewPager.OnPageChangeListener {
+
+                var prePosition = 0
+
+                override fun onPageScrollStateChanged(state: Int) {
+                }
+
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                }
+
+                override fun onPageSelected(position: Int) {
+                    if (prePosition != -1) {
+                        indicators[prePosition].isSelected = false
+                    }
+                    indicators[position].isSelected = true
+                    prePosition = position
+                }
+
+            }
+
 
             fun initIndicator(container: ViewGroup, indicators: Array<View>) {
                 val margin = DisplayUtils.dip2px(2f)
@@ -124,25 +161,5 @@ class CatEyeFragmentDelegate : BaseAppDelegate() {
 
     override fun getRootLayoutId(): Int {
         return R.layout.fragment_cateye
-    }
-
-    class ChangeListener(val indicators: Array<View>) : ViewPager.OnPageChangeListener {
-
-        var prePosition = 0
-
-        override fun onPageScrollStateChanged(state: Int) {
-        }
-
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-        }
-
-        override fun onPageSelected(position: Int) {
-            if (prePosition != -1) {
-                indicators[prePosition].isSelected = false
-            }
-            indicators[position].isSelected = true
-            prePosition = position
-        }
-
     }
 }
